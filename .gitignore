@@ -1,0 +1,8 @@
+/public/wp-content/uploads/*
+!/public/wp-content/uploads/.gitkeep
+/public/wp-content/debug.log
+vendor
+.env
+!.env.example
+/coverage
+composer.lock
