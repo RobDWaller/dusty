@@ -1,6 +1,9 @@
 /public/wp-content/uploads/*
 !/public/wp-content/uploads/.gitkeep
+/public/wp-content/plugins/*
+!/public/wp-content/plugins/.gitkeep
 /public/wp-content/debug.log
+/public/wordpress
 vendor
 .env
 !.env.example
