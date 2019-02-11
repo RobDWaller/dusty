@@ -2,7 +2,10 @@
 !/public/wp-content/uploads/.gitkeep
 /public/wp-content/plugins/*
 !/public/wp-content/plugins/.gitkeep
+/public/wp-content/themes/*
+!/public/wp-content/themes/.gitkeep
 /public/wp-content/debug.log
+/public/wp-content/languages
 /public/wordpress
 vendor
 .env
