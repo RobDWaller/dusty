@@ -140,7 +140,7 @@ define('WP_CONTENT_DIR', __DIR__ . CONTENT_DIR);
 define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
 
 /* Set the default theme to the built in project-theme */
-define('WP_DEFAULT_THEME', 'project-theme');
+define('WP_DEFAULT_THEME', 'twentynineteen');
 
 /* That's all, stop editing! Happy blogging. */
 

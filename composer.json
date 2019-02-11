@@ -17,8 +17,9 @@
         "johnpbloch/wordpress": "^4.0",
         "wpackagist-plugin/wordpress-seo": "^7.0",
         "wpackagist-plugin/advanced-custom-fields": "^5.0",
+        "wpackagist-theme/twentynineteen": "^1.0",
         "vlucas/phpdotenv": "^2.4",
-        "rbdwllr/wordpress-salts-generator": "^0.1"
+        "rbdwllr/wordpress-salts-generator": "dev-bug-cli"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
