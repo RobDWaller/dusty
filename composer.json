@@ -1,6 +1,6 @@
 {
-    "name": "rbdwllr/wordpress-slim",
-    "description": "WordPress Composer Starter Repo",
+    "name": "rbdwllr/dusty",
+    "description": "A WordPress starter repo which uses Composer and Docker.",
     "authors": [
         {
             "name": "Rob Waller",
@@ -19,7 +19,7 @@
         "wpackagist-plugin/advanced-custom-fields": "^5.0",
         "wpackagist-theme/twentynineteen": "^1.0",
         "vlucas/phpdotenv": "^2.4",
-        "rbdwllr/wordpress-salts-generator": "dev-bug-cli"
+        "rbdwllr/wordpress-salts-generator": "^0.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
@@ -40,10 +40,8 @@
         }
     },
     "scripts": {
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
+        "make-environment": [
+            "cp .env.example .env",
             "vendor/bin/wpsalts dotenv --clean >> .env"
         ]
     }
