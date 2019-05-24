@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  web:
+    container_name: wordpress_web
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/vhosts.conf:/etc/apache2/sites-available/000-default.conf
+    depends_on:
+      - data
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+  data:
+    container_name: wordpress_data
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=wordpress
+    volumes:
+      - ./docker/my.cnf:/root/.my.cnf
+    ports:
+      - "3306:3306"
