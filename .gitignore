@@ -12,3 +12,4 @@ vendor
 !.env.example
 /coverage
 composer.lock
+*.sql
