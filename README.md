@@ -9,7 +9,7 @@ The library comes with a Docker configuration which will allow you to begin deve
 Install using Composer:
 
 ```sh
-composer require rbdwllr/dusty project-name
+composer create-project rbdwllr/dusty project-name
 ```
 
 Build Docker:
