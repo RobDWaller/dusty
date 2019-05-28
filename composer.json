@@ -43,7 +43,7 @@
     "scripts": {
         "make-environment": [
             "cp .env.example .env",
-            "vendor/bin/wpsalts dotenv --clean >> .env"
+            "php vendor/bin/wpsalts dotenv --clean >> .env"
         ]
     }
 }
