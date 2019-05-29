@@ -18,7 +18,7 @@
         "wpackagist-plugin/wordpress-seo": "^11.0",
         "wpackagist-plugin/advanced-custom-fields": "^5.0",
         "wpackagist-theme/twentynineteen": "^1.0",
-        "vlucas/phpdotenv": "^2.4",
+        "vlucas/phpdotenv": "^3.0",
         "rbdwllr/wordpress-salts-generator": "^0.2",
         "rbdwllr/atlantic-city": "0.1.0"
     },
