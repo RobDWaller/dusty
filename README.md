@@ -4,12 +4,12 @@ Dusty is a WordPress started repo based around Composer and Docker. It allows yo
 
 The library comes with a Docker configuration which will allow you to begin development immediately. The Docker development environment runs Apache, PHP 7.3 and MySQL 5.7.
 
-## Setup
+## Setup (Linux / Mac)
 
 Install using Composer:
 
 ```sh
-composer create-project rbdwllr/dusty project-name
+composer create-project --no-dev --no-interaction rbdwllr/dusty project-name
 ```
 
 Build Docker:
@@ -19,12 +19,29 @@ docker-compose build
 docker-compose up -d
 ```
 
-Install Composer dependencies:
+Create .env file with WordPress salts:
 
 ```sh
-docker-compose exec web composer install
 docker-compose exec web composer make-environment
 ```
+
+## Setup on Windows / WSL
+
+If you're running Docker on Windows you may experience problems if you're running Composer via WSL or GitBash.
+
+Run the following commands:
+
+```sh
+composer create-project --no-interaction --no-install rbdwllr/dusty project-name
+
+docker-compose build
+docker-compose up -d
+
+docker-compose exec web composer install --no-dev
+docker-compose exec web composer make-environment
+```
+
+If you download the source files to your system just run the docker-compose commands.  
 
 ## Useful MySQL Commands
 
