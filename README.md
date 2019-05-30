@@ -27,13 +27,14 @@ docker-compose exec web composer make-environment
 
 ## Setup on Windows / WSL
 
-If you're running Docker on Windows you may experience problems if you're running Composer via WSL or GitBash.
+If you're running Docker on Windows you may experience problems if you're running Composer via WSL or GitBash. This is because Docker on Windows does not like the symlinks Composer creates in the vendor folder.
 
-Run the following commands:
+To install Dusty on Windows / WSL run the following commands:
 
 ```sh
 composer create-project --no-interaction --no-install rbdwllr/dusty project-name
 
+# These commands will need to be run in PowerShell.
 docker-compose build
 docker-compose up -d
 
@@ -58,3 +59,15 @@ docker-compose exec data mysqldump wordpress > wordpress.sql
 # Windows: Safely dump the WordPress Database.
 docker-compose exec data mysqldump wordpress | Set-Content wordpress.sql
 ```
+
+## More Info on WordPress Composer
+
+If you want to learn more about using WordPress with Composer please watch this video by [Chris Sherry](https://twitter.com/tweetingsherry).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v57UWTXla3M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Cat Tax
+
+This is Dusty, AKA Princess Dustle-Puff I, Ruler of All Things Soft and Scratchable, I named this repo after her. She is sat in my code chair, I think she's trying to help...
+
+![Dusty in Code Chair](https://rbrt.wllr.info/assets/img/dusty-small.jpg "Dusty in Code Chair")
