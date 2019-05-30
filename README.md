@@ -66,6 +66,8 @@ If you want to learn more about using WordPress with Composer please watch this 
 
 [![IMAGE ALT TEXT HERE](https://www.youtube.com/embed/v57UWTXla3M/0.jpg | width=500)](https://www.youtube.com/embed/v57UWTXla3M)
 
+<img src="https://www.youtube.com/embed/v57UWTXla3M/0.jpg" width="500">
+
 ## Cat Tax
 
 This is Dusty, AKA Princess Dustle-Puff I, Ruler of All Things Soft and Scratchable, I named this repo after her. She is sat in my code chair, I think she's trying to help...
