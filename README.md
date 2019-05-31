@@ -60,14 +60,12 @@ docker-compose exec data mysqldump wordpress > wordpress.sql
 docker-compose exec data mysqldump wordpress | Set-Content wordpress.sql
 ```
 
-## More Info on WordPress Composer
+## Useful Resources
 
-If you want to learn more about using WordPress with Composer please watch this video by [Chris Sherry](https://twitter.com/tweetingsherry).
-
-<img src="https://www.youtube.com/embed/v57UWTXla3M/0.jpg" width="500">
+- [Chris Sherry's](https://twitter.com/tweetingsherry) talk on [WordPress and Composer at PHP UK](https://www.youtube.com/embed/v57UWTXla3M).
 
 ## Cat Tax
 
-This is Dusty, AKA Princess Dustle-Puff I, Ruler of All Things Soft and Scratchable, I named this repo after her. She is sat in my code chair, I think she's trying to help...
+This is Dusty, AKA Princess Dustle-Puff, Ruler of All Things Soft and Scratchable, I named this repo after her. She is sat in my code chair, I think she's trying to help...
 
 <img src="https://rbrt.wllr.info/assets/img/dusty-small.jpg" width="500">
