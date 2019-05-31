@@ -13,3 +13,4 @@ vendor
 /coverage
 composer.lock
 *.sql
+public/.htaccess
