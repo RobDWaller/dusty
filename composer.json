@@ -34,12 +34,6 @@
         },
         "wordpress-install-dir": "public/wordpress"
     },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/App/",
-            "Theme\\": "public/wp-content/themes/project-theme/Theme/"
-        }
-    },
     "scripts": {
         "make-environment": [
             "cp .env.example .env",
