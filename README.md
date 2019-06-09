@@ -70,14 +70,14 @@ Usually if you are using a VCS repository, such as GitHub, it will be private an
 To give Docker access to these SSH keys you will need to copy them into the web container and amend the user privileges:
 
 ```sh
-# Copy the your local id_rsa key into the root/.ssh folder of the web container.
+# Copy your local private key into the root/.ssh folder of the web container.
 docker cp ~/.ssh/id_rsa wordpress_web:/root/.ssh
 
-# Amend the privileges of the web container .ssh folder.
+# Amend the privileges of the .ssh folder to 600 in the web container.
 docker-compose exec web chmod 600 -R /root/.ssh
 ```
 
-Once this is done you can run composer install `docker-compose exec web composer install --no-dev`.
+Once this is done you can run composer install with no interaction `docker-compose exec web composer install --no-dev --no-interaction`.
 
 **Note:** The keys will be stored in a separate Docker volume so will persist even if you delete the container.
 
