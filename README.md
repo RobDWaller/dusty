@@ -25,7 +25,7 @@ Create .env file with WordPress salts:
 docker-compose exec web composer make-environment
 ```
 
-## Setup on Windows / WSL
+## Setup (Windows / WSL)
 
 If you're running Docker on Windows you may experience problems if you're running Composer via WSL or GitBash. This is because Docker on Windows does not like the symlinks Composer creates in the vendor folder.
 
@@ -43,6 +43,43 @@ docker-compose exec web composer make-environment
 ```
 
 If you download the source files to your system just run the docker-compose commands.  
+
+## Use Private Repos
+
+Sometimes you'll wish to keep some of your code private but still pull it in via Composer. For instance you may have a WordPress theme that contains branded material and custom code.
+
+You can do this by adding a Version Control System repository to your Composer config:
+
+```js
+"repositories":[
+    {
+        "type":"composer",
+        "url":"https://wpackagist.org"
+    },
+    {
+        "type": "vcs",
+        "url":  "git@github.com:vendor/repo-name.git"
+    }
+],
+```
+
+### Repository SSH Keys
+
+Usually if you are using a VCS repository, such as GitHub, it will be private and you will need to allow Composer to authenticate with the repository. The easiest way to do this is via SSH keys.
+
+To give Docker access to these SSH keys you will need to copy them into the web container and amend the user privileges:
+
+```sh
+# Copy your local private key into the root/.ssh folder of the web container.
+docker cp ~/.ssh/id_rsa wordpress_web:/root/.ssh
+
+# Amend the privileges of the .ssh folder to 600 in the web container.
+docker-compose exec web chmod 600 -R /root/.ssh
+```
+
+Once this is done you can run composer install with no interaction `docker-compose exec web composer install --no-dev --no-interaction`.
+
+**Note:** The keys will be stored in a separate Docker volume so will persist even if you delete the container.
 
 ## Useful MySQL Commands
 

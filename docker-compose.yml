@@ -1,5 +1,8 @@
 version: "3"
 
+volumes:
+    keys:
+
 services:
 
   web:
@@ -13,6 +16,7 @@ services:
     volumes:
       - .:/var/www/html
       - ./docker/vhosts.conf:/etc/apache2/sites-available/000-default.conf
+      - keys:/root/.ssh
     depends_on:
       - data
     environment:
