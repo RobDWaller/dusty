@@ -14,3 +14,4 @@ vendor
 composer.lock
 *.sql
 public/.htaccess
+data
