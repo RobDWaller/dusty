@@ -1,10 +1,14 @@
 # Dusty: A WordPress Composer Starter Repo
 
-Dusty is a WordPress started repo based around Composer and Docker. It allows you to create WordPress repos without the need to store core WordPress files in your Git repository. This makes for far easier deployments and cleaner code. It also allows you to load in non-WordPress libraries such as PHP Dot Env via Composer.
+Dusty is a WordPress started repo based around [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/products/docker-desktop). It allows you to create WordPress repos without the need to store core WordPress files in your Git repository. This makes for far easier deployments and cleaner code. It also allows you to load in non-WordPress libraries such as PHP Dot Env via Composer.
 
 The library comes with a Docker configuration which will allow you to begin development immediately. The Docker development environment runs Apache, PHP 7.3 and MySQL 5.7.
 
-## Setup (Linux / Mac)
+## Setup
+
+To make use of Dusty you will need to install both [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/products/docker-desktop) locally. Composer is a PHP package manager linked to [Packagist](https://packagist.org/) and Docker is a containerisation platform that allows you to easily generate development and production environments.
+
+### (Linux / Mac)
 
 Install using Composer:
 
@@ -25,7 +29,7 @@ Create .env file with WordPress salts:
 docker-compose exec web composer make-environment
 ```
 
-## Setup (Windows / WSL)
+### (Windows / WSL)
 
 If you're running Docker on Windows you may experience problems if you're running Composer via WSL or GitBash. This is because Docker on Windows does not like the symlinks Composer creates in the vendor folder.
 
@@ -43,6 +47,35 @@ docker-compose exec web composer make-environment
 ```
 
 If you download the source files to your system just run the docker-compose commands.  
+
+## Package and Plugin Management
+
+By default Composer can pull in packages from Packagist, and this is great if you wish to extend WordPress with more general PHP libraries and frameworks. This though does not help you easily manage plugins and themes. Dusty though integrates with a package manager called [WPackagist](https://wpackagist.org/) which is the WordPress equivalent of Packagist for plugins and themes.
+
+You can add your plugins and themes to your composer.json file in exactly the same way as you add PHP packages. They will also be placed in the relevant WordPress directories, rather than the vendor folder.
+
+```js
+// Example composer.json config, using WPackagist.
+"repositories":[
+    {
+        "type":"composer",
+        "url":"https://wpackagist.org"
+    }
+],
+"require": {
+    "wpackagist-plugin/wordpress-seo": "^11.0",
+    "wpackagist-plugin/advanced-custom-fields": "^5.0",
+    "wpackagist-theme/twentynineteen": "^1.0",
+},
+"extra": {
+    "installer-paths": {
+        "public/wp-content/mu-plugins/{$name}": ["type:wordpress-muplugin"],
+        "public/wp-content/plugins/{$name}": ["type:wordpress-plugin"],
+        "public/wp-content/themes/{$name}": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "public/wordpress"
+}
+```
 
 ## Use Private Repos
 
@@ -81,20 +114,33 @@ Once this is done you can run composer install with no interaction `docker-compo
 
 **Note:** The keys will be stored in a separate Docker volume so will persist even if you delete the container.
 
-## Useful MySQL Commands
+## Managing MySQL
+
+On occasions you will need to interact with MySQL directly and you can do this via a SQL GUI tool such as [SequelPro](https://www.sequelpro.com/) or [HeidiSQL](https://www.heidisql.com/). But you may also wish to interact with the database via the CLI which can be done easily via docker-compose.
 
 ```sh
 # Access MySQL Database.
 docker-compose exec data mysql
+```
 
-# Install custom WordPress Database.
-docker-compose exec data mysql wordpress < custom-wordpress-db.sql
+You may also wish to import data into the database via the CLI too, Dusty makes this easy. When you create Dusty via docker-compose a directory called data is created both locally and in the container. You can then drop SQL files into the local data directory and they will be available to the container. Then you can access the container and import the files.
 
-# Dump the WordPress Database.
-docker-compose exec data mysqldump wordpress > wordpress.sql
+```sh
+docker-compose exec data
 
-# Windows: Safely dump the WordPress Database.
-docker-compose exec data mysqldump wordpress | Set-Content wordpress.sql
+cd data
+
+mysql wordpress < example.sql
+```
+
+You can also dump data back out to the local data directory in a similar way.
+
+```sh
+docker-compose exec data
+
+cd data
+
+mysqldump wordpress > my-dump.sql
 ```
 
 ## Useful Resources
