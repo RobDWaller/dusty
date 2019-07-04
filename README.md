@@ -1,6 +1,6 @@
 # Dusty: A WordPress Composer Starter Repo
 
-Dusty is a WordPress started repo based around [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/products/docker-desktop). It allows you to create WordPress repos without the need to store core WordPress files in your Git repository. This makes for far easier deployments and cleaner code. It also allows you to load in non-WordPress libraries such as PHP Dot Env via Composer.
+Dusty is a WordPress starter repo based around [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/products/docker-desktop). It allows you to create WordPress repos without the need to store core WordPress files in your Git repository. This makes for far easier deployments and cleaner code. It also allows you to load in non-WordPress packages such as [PHPDotEnv](https://packagist.org/packages/vlucas/phpdotenv) via Composer.
 
 The library comes with a Docker configuration which will allow you to begin development immediately. The Docker development environment runs Apache, PHP 7.3 and MySQL 5.7.
 
@@ -94,6 +94,19 @@ You can do this by adding a Version Control System repository to your Composer c
         "url":  "git@github.com:vendor/repo-name.git"
     }
 ],
+```
+
+**Note:** Your theme will require a composer.json file with config which defines it as a WordPress theme. You will need a similar setup if you are creating a private plugin, but you will set the type as `"type": "wordpress-plugin"`.
+
+```js
+// Example composer.json for a WordPress theme.
+{
+    "name": "vendor/theme",
+    "description": "My cool theme.",
+    "type": "wordpress-theme",
+    "license": "proprietary",
+    "require": {}
+}
 ```
 
 ### Repository SSH Keys
