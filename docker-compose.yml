@@ -2,6 +2,7 @@ version: "3"
 
 volumes:
     keys:
+    db-data:
 
 services:
 
@@ -30,5 +31,7 @@ services:
       - MYSQL_DATABASE=wordpress
     volumes:
       - ./docker/my.cnf:/root/.my.cnf
+      - ./data:/var/www/html/data
+      - db-data:/var/lib/mysql
     ports:
       - "3306:3306"

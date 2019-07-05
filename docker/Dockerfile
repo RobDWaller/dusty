@@ -5,4 +5,14 @@ RUN apt-get update && apt-get install -y git zip unzip \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && rm composer-setup.php \
     && a2enmod rewrite headers \
-    && docker-php-ext-install mysqli pdo pdo_mysql
+    && docker-php-ext-install mysqli pdo_mysql bcmath exif
+
+RUN apt-get install -y libpng-dev libjpeg-dev \
+    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+    && docker-php-ext-install gd
+
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /etc/ssl/private/apache-selfsigned.key \
+    -out /etc/ssl/certs/apache-selfsigned.crt \
+    -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com" \
+    && a2enmod ssl

@@ -26,7 +26,7 @@ require_once(__DIR__ . '/../vendor/autoload.php');
 
 /**
  * @author Rob Waller <rdwaller1984@googlemail.com>
- * Initiate the DotEnv functionality for WordPress and define required variables.s
+ * Initiate the DotEnv functionality for WordPress and define required variables.
  */
 try {
     $dotenv = new Dotenv\Dotenv(__DIR__ . '/../');
@@ -43,6 +43,7 @@ try {
             'ENVIRONMENT',
             'WP_DEBUG',
             'WP_DEBUG_LOG',
+            'DISABLE_WP_CRON',
             'SSL',
             'AUTH_KEY',
             'SECURE_AUTH_KEY',
@@ -122,14 +123,14 @@ $table_prefix  = getenv("DB_PREFIX");
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', getenv("WP_DEBUG"));
-define('WP_DEBUG_LOG', getenv("WP_DEBUG_LOG"));
+define('WP_DEBUG', getenv("WP_DEBUG") === "true");
+define('WP_DEBUG_LOG', getenv("WP_DEBUG_LOG") === "true");
 
 /**
  * Custom Settings
  */
 define('AUTOMATIC_UPDATER_DISABLED', true);
-define('DISABLE_WP_CRON', true);
+define('DISABLE_WP_CRON', getenv("DISABLE_WP_CRON") === "true");
 define('DISALLOW_FILE_EDIT', true);
 
 define('WP_HOME', 'http' . (getenv("SSL") === 'true' ? 's' : '') . '://' .  $_SERVER['HTTP_HOST']);
