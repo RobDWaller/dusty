@@ -145,7 +145,7 @@ You may also wish to import data into the database via the CLI too, Dusty makes 
 ```sh
 docker-compose exec data
 
-cd data
+cd /var/www/html/data
 
 mysql wordpress < example.sql
 ```
@@ -155,7 +155,7 @@ You can also dump data back out to the local data directory in a similar way.
 ```sh
 docker-compose exec data
 
-cd data
+cd /var/www/html/data
 
 mysqldump wordpress > my-dump.sql
 ```
