@@ -29,6 +29,8 @@ Create .env file with WordPress salts:
 docker-compose exec web composer make-environment
 ```
 
+Once these steps have been completed go to [localhost:8080](http://localhost:8080/) to use WordPress and finish off the installation process.
+
 ### (Windows / WSL)
 
 If you're running Docker on Windows you may experience problems if you're running Composer via WSL or GitBash. This is because Docker on Windows does not like the symlinks Composer creates in the vendor folder.
@@ -46,7 +48,9 @@ docker-compose exec web composer install --no-dev
 docker-compose exec web composer make-environment
 ```
 
-If you download the source files to your system just run the docker-compose commands.  
+Once these steps have been completed go to [localhost:8080](http://localhost:8080/) to use WordPress and finish off the installation process.
+
+**Note:** If you download the source files to your system just run the docker-compose commands.  
 
 ## Package and Plugin Management
 
