@@ -20,7 +20,7 @@
         "wpackagist-theme/twentynineteen": "^1.0",
         "vlucas/phpdotenv": "^2.0",
         "rbdwllr/wordpress-salts-generator": "^0.2",
-        "rbdwllr/atlantic-city": "0.1.0"
+        "rbdwllr/atlantic-city": "^0.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
