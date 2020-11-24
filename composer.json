@@ -14,13 +14,13 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "^5.0",
-        "wpackagist-plugin/wordpress-seo": "^11.0",
-        "wpackagist-plugin/advanced-custom-fields": "^5.0",
-        "wpackagist-theme/twentynineteen": "^1.0",
-        "vlucas/phpdotenv": "^2.0",
+        "johnpbloch/wordpress": "^5.5",
+        "wpackagist-plugin/wordpress-seo": "^15.0",
+        "wpackagist-plugin/advanced-custom-fields": "^5.9",
+        "wpackagist-theme/twentytwenty": "^1.5",
+        "vlucas/phpdotenv": "^5.2",
         "rbdwllr/wordpress-salts-generator": "^0.2",
-        "rbdwllr/atlantic-city": "0.1.0"
+        "rbdwllr/atlantic-city": "0.3.0.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
