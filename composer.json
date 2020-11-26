@@ -14,6 +14,7 @@
         }
     ],
     "require": {
+        "php": ">=7.4.0",
         "johnpbloch/wordpress": "^5.5",
         "wpackagist-plugin/wordpress-seo": "^15.0",
         "wpackagist-plugin/advanced-custom-fields": "^5.9",
