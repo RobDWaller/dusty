@@ -1,19 +1,21 @@
 # Dusty: A WordPress Composer Starter Repo
 
-Dusty is a WordPress starter repo based around [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/products/docker-desktop). It allows you to create WordPress repos without the need to store core WordPress files in your Git repository. This makes for far easier deployments and cleaner code. It also allows you to load in non-WordPress packages such as [PHPDotEnv](https://packagist.org/packages/vlucas/phpdotenv) via Composer.
+![PHP Version Support](https://img.shields.io/packagist/php-v/rbdwllr/dusty)
 
-The library comes with a Docker configuration which will allow you to begin development immediately. The Docker development environment runs Apache, PHP 7.3 and MySQL 5.7.
+Dusty is an example WordPress starter repo based around [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/products/docker-desktop). It allows you to create WordPress repos without the need to store core WordPress files in your Git repository. This makes for far easier deployments and cleaner code. It also allows you to load in non-WordPress packages such as [PHPDotEnv](https://packagist.org/packages/vlucas/phpdotenv) via Composer.
 
 ## Setup
 
 To make use of Dusty you will need to install both [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/products/docker-desktop) locally. Composer is a PHP package manager linked to [Packagist](https://packagist.org/) and Docker is a containerisation platform that allows you to easily generate development and production environments.
 
-### (Linux / Mac)
+### Installation
+
+Installation assumes you are working in a Linux or a Linux like environment.
 
 Install using Composer:
 
 ```sh
-composer create-project --no-dev --no-interaction rbdwllr/dusty project-name
+composer create-project --no-dev --no-interaction --ignore-platform-reqs rbdwllr/dusty [project-name]
 ```
 
 Build Docker:
@@ -30,27 +32,6 @@ docker-compose exec web composer make-environment
 ```
 
 Once these steps have been completed go to [localhost:8080](http://localhost:8080/) to use WordPress and finish off the installation process.
-
-### (Windows / WSL)
-
-If you're running Docker on Windows you may experience problems if you're running Composer via WSL or GitBash. This is because Docker on Windows does not like the symlinks Composer creates in the vendor folder.
-
-To install Dusty on Windows / WSL run the following commands:
-
-```sh
-composer create-project --no-interaction --no-install rbdwllr/dusty project-name
-
-# These commands will need to be run in PowerShell.
-docker-compose build
-docker-compose up -d
-
-docker-compose exec web composer install --no-dev
-docker-compose exec web composer make-environment
-```
-
-Once these steps have been completed go to [localhost:8080](http://localhost:8080/) to use WordPress and finish off the installation process.
-
-**Note:** If you download the source files to your system just run the docker-compose commands.  
 
 ## Package and Plugin Management
 
@@ -133,7 +114,7 @@ Once this is done you can run composer install with no interaction `docker-compo
 
 ## Managing MySQL
 
-On occasions you will need to interact with MySQL directly and you can do this via a SQL GUI tool such as [SequelPro](https://www.sequelpro.com/) or [HeidiSQL](https://www.heidisql.com/). But you may also wish to interact with the database via the CLI which can be done easily via docker-compose.
+On occasions you will need to interact with MySQL (MariaDB) directly and you can do this via a SQL GUI tool such as [SequelPro](https://www.sequelpro.com/) or [HeidiSQL](https://www.heidisql.com/). But you may also wish to interact with the database via the CLI which can be done easily via docker-compose.
 
 ```sh
 # Access MySQL Database.
@@ -143,7 +124,7 @@ docker-compose exec data mysql
 You may also wish to import data into the database via the CLI too, Dusty makes this easy. When you create Dusty via docker-compose a directory called data is created both locally and in the container. You can then drop SQL files into the local data directory and they will be available to the container. Then you can access the container and import the files.
 
 ```sh
-docker-compose exec data
+docker-compose exec data bash
 
 cd /var/www/html/data
 
@@ -153,7 +134,7 @@ mysql wordpress < example.sql
 You can also dump data back out to the local data directory in a similar way.
 
 ```sh
-docker-compose exec data
+docker-compose exec data bash
 
 cd /var/www/html/data
 
