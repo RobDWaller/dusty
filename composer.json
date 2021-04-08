@@ -18,7 +18,7 @@
         "johnpbloch/wordpress": "^5.5",
         "wpackagist-plugin/wordpress-seo": "^15.0",
         "wpackagist-plugin/advanced-custom-fields": "^5.9",
-        "wpackagist-theme/twentytwenty": "^1.5",
+        "wpackagist-theme/twentytwentyone": "^1.2",
         "vlucas/phpdotenv": "^5.2",
         "rbdwllr/wordpress-salts-generator": "^0.2",
         "rbdwllr/atlantic-city": "^0.3"
